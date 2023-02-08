@@ -1,12 +1,15 @@
 import React from 'react';
 
-const NumberInput=()=>{
+interface Props{
+ cont: string
+}
+
+const NumberInput: React.FC<Props>=({cont})=>{  
     
     return(
         <div>
-            <label htmlFor="tentacles">Number of tentacles (10-100):</label>
-            <input type="number" id="tentacles" name="tentacles"
-            min="10" max="100" />
+            <label htmlFor={cont}>{cont}</label>
+            <input type="number" id={cont} name={cont} min="0" value={10}/>
         </div>
     )
 }

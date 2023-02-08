@@ -21,6 +21,8 @@ const Setting=()=>{
     const [open, setOpen]= useState(false);
     const handleOpen=()=>setOpen(true);
     const handleClose=()=>setOpen(false);
+   
+    const names= ['pomodoro', ' ShortBreak', 'LongBreak'];
 
     return(
         <div>
@@ -32,7 +34,9 @@ const Setting=()=>{
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <NumberInput />
+                    {
+                     names.map((con:any)=><NumberInput key={con} cont={con}/>)
+                    }
                 </Box>
             </Modal>
         </div>
