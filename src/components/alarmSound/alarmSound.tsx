@@ -1,33 +1,63 @@
-import React,{useState} from 'react';
-import soundOne from './sounds/soundOne.mp3';
-import soundTwo from './sounds/soundTwo.mp3';
-import soundThree from './sounds/soundThree.mp3';
+import React,{useState, useEffect} from 'react';
+import alarm from './sounds/soundOne.mp3';
+import emergency from './sounds/soundTwo.mp3';
+import tick from './sounds/soundThree.mp3';
+
+const soundList=[
+    {
+        soundTrack:alarm,
+        soundLabel:"alarm"
+    },
+    {
+        soundTrack:emergency,
+        soundLabel:"emergency"
+    },
+    {
+        soundTrack:tick,
+        soundLabel:"tick"
+    }
+]
 
 
 const AlarmSound=()=>{
     const [soundValue, setSoundValue]= useState("");
     // const [audio] = useState(new Audio(soundOne));
     const handleSoundChange=(event:any): void=>{
-        setSoundValue(event.target.value)
+        setSoundValue(event.target.value);
     }
 
-    const playSound=(sound: any)=>{
-        const audio= new Audio(sound);
-        audio.play()
+    useEffect(()=>{
+        playSound(soundValue);
+    },[soundValue]);
+
+    // const playSound=(sound: any):void=>{
+    //     //check value of soundValue if it is thesame as value of .... play sound
+    //     const audio= new Audio(sound);
+    //     audio.play()
+    // }
+
+    const playSound =(soundParam:string)=>{
+
+        soundList.map((sound:any)=>{
+            if(sound.soundLabel===soundParam){
+                const audio= new Audio(sound.soundTrack);
+                audio.play()
+            }
+
+        })
     }
-    // if soundValue and ... are thesame play ... sound
+    
     return (
         <div>
-            <select name="cars" id="cars" onChange={handleSoundChange}>
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="opel">Opel</option>
-                <option value="audi">Audi</option>
+            <select name="sounds" id="sounds" onChange={handleSoundChange}>
+                <option value="alarm">Alarm</option>
+                <option value="emergency">Emergency</option>
+                <option value="tick">Tick</option>
             </select>
             <p>{soundValue}</p>
-            <button onClick={()=>playSound(soundOne)}>Alarm</button>
-            <button onClick={()=>playSound(soundTwo)}>Emergency</button>
-            <button onClick={()=>playSound(soundThree)}>Clock ticks</button>
+            {/* <button onClick={()=>playSound(alarm)}>Alarm</button>
+            <button onClick={()=>playSound(emergency)}>Emergency</button>
+            <button onClick={()=>playSound(tick)}>Clock ticks</button> */}
         </div>
     )
 }
