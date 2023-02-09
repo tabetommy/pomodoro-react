@@ -9,7 +9,7 @@ const NumberInput: React.FC<Props>=({cont})=>{
     return(
         <div>
             <label htmlFor={cont}>{cont}</label>
-            <input type="number" id={cont} name={cont} min="0" value={10}/>
+            <input type="number" id={cont} name={cont} min="0"/>
         </div>
     )
 }

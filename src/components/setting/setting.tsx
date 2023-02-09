@@ -2,7 +2,12 @@ import React,{useState} from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
+import Switch from '@mui/material/Switch';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+
 import NumberInput from '../numberInput/numberInput';
+import AlarmSound from '../alarmSound/alarmSound';
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -15,7 +20,7 @@ const style = {
     boxShadow: 24,
     p: 4,
   };
-
+ 
 
 const Setting=()=>{
     const [open, setOpen]= useState(false);
@@ -37,6 +42,13 @@ const Setting=()=>{
                     {
                      names.map((con:any)=><NumberInput key={con} cont={con}/>)
                     }
+                    <FormGroup>
+                        <FormControlLabel control={<Switch />} 
+                        label="Auto start pomodoros" labelPlacement="top"/>
+                        <FormControlLabel control={<Switch />} 
+                        label="Auto start breaks" labelPlacement="top" />
+                    </FormGroup>
+                    <AlarmSound />
                 </Box>
             </Modal>
         </div>
