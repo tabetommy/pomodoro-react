@@ -21,7 +21,6 @@ const soundList=[
 
 const AlarmSound=()=>{
     const [soundValue, setSoundValue]= useState("");
-    // const [audio] = useState(new Audio(soundOne));
     const handleSoundChange=(event:any): void=>{
         setSoundValue(event.target.value);
     }
@@ -30,15 +29,9 @@ const AlarmSound=()=>{
         playSound(soundValue);
     },[soundValue]);
 
-    // const playSound=(sound: any):void=>{
-    //     //check value of soundValue if it is thesame as value of .... play sound
-    //     const audio= new Audio(sound);
-    //     audio.play()
-    // }
 
     const playSound =(soundParam:string)=>{
-
-        soundList.map((sound:any)=>{
+        soundList.map((sound:any):void=>{
             if(sound.soundLabel===soundParam){
                 const audio= new Audio(sound.soundTrack);
                 audio.play()
@@ -54,10 +47,6 @@ const AlarmSound=()=>{
                 <option value="emergency">Emergency</option>
                 <option value="tick">Tick</option>
             </select>
-            <p>{soundValue}</p>
-            {/* <button onClick={()=>playSound(alarm)}>Alarm</button>
-            <button onClick={()=>playSound(emergency)}>Emergency</button>
-            <button onClick={()=>playSound(tick)}>Clock ticks</button> */}
         </div>
     )
 }
