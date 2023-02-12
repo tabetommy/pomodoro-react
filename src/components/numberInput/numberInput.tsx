@@ -1,12 +1,16 @@
-import React,{useState} from 'react';
+import React,{useContext} from 'react';
+import { GlobalContext } from '../GlobalState';
 
 
 const NumberInput=()=>{ 
-    const [pomodoro, setPomodoro]= useState(25);
-    const [shortBreak, setShortBreak]= useState(5);
-    const [longBreak, setLongBreak]= useState(15);
+    //importing the state from GlobalState.tsx
+    const {pomodoro,setPomodoro, 
+        shortBreak, setShortBreak, 
+        longBreak, setLongBreak}= useContext(GlobalContext);
+    
 
     const changeHandler=(e:any): void=>{
+        //setchange based on input element's name
         if(e.target.name==="pomodoro"){
             setPomodoro(e.target.value)
         }else if(e.target.name==="short-break"){
@@ -23,13 +27,13 @@ const NumberInput=()=>{
             name="pomodoro" min="0" 
             value={pomodoro}
             onChange={changeHandler}
-            />
+            /><br />
             <label htmlFor="short-break">Short Break</label>
             <input type="number" id="short-break"
             name="short-break" min="0" 
             value={shortBreak}
             onChange={changeHandler}
-            />
+            /><br />
             <label htmlFor="long-break">Long break</label>
             <input type="number" id="long-break" 
             name="long-break" min="0" 
