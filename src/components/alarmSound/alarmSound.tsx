@@ -19,8 +19,11 @@ const soundList=[
 ]
 
 
-const AlarmSound=()=>{
+
+
+const AlarmSound: React.FC=()=>{
     const [soundValue, setSoundValue]= useState("");
+
     const handleSoundChange=(event:any): void=>{
         setSoundValue(event.target.value);
     }

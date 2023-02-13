@@ -24,7 +24,7 @@ const style = {
 
 const Setting=()=>{
     const [open, setOpen]= useState(false);
-   
+    
     const handleOpen=()=>setOpen(true);
     const handleClose=()=>setOpen(false);
    
@@ -45,7 +45,7 @@ const Setting=()=>{
                         <FormControlLabel control={<Switch />} 
                         label="Auto start breaks" labelPlacement="top" />
                     </FormGroup>
-                    <AlarmSound />
+                    <AlarmSound/>
                 </Box>
             </Modal>
         </div>

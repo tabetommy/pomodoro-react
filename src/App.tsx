@@ -14,14 +14,16 @@ function App() {
   const [longBreak, setLongBreak]= useState<number>(15);
 
   return (
+    <div className='App'>
     <GlobalContext.Provider 
     value={{
     pomodoro,setPomodoro,
     shortBreak,setShortBreak,
     longBreak,setLongBreak}}>
-      <Setting />
-      <CountDownTimer />    
+        <Setting />
+        <CountDownTimer />    
     </GlobalContext.Provider>
+    </div>
   );
 }
 
